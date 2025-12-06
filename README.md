@@ -16,7 +16,7 @@ To figure out these camera positions (poses), 3DGS relies on a classic tool call
 
 **Here is the catch:** When you feed COLMAP low-resolution images (e.g., 100x100 pixels), it fails.
 
-![Success vs Failure Flow Chart](path/to/slide6_7_image.png)
+![Success vs Failure Flow Chart](images/colmap_failure.png)
 *Figure 1: The COLMAP failure case on low-resolution inputs.*
 
 As shown above, purely low-res images don't have enough distinct pixels for COLMAP to lock onto. It returns "No Poses," and the 3DGS training crashes before it even begins. This is a major blocker for robotics or drones that might stream low-bandwidth video but still need to build a 3D map.
@@ -37,7 +37,7 @@ Our project fills this gap by marrying **Super-Resolution (AI Upscaling)** with 
 
 We proposed a novel pipeline to bypass the resolution limit. The core idea is simple but effective: *If the image is too blurry for COLMAP, let's fake the details so COLMAP thinks it's looking at a high-res image.*
 
-![Proposed Method Flowchart](path/to/slide17_24_image.png)
+![Proposed Method Flowchart](images/proposed_pipeline.png)
 *Figure 2: The proposed Upscale-Pose-Downscale pipeline.*
 
 ### Step-by-Step Algorithm
@@ -72,7 +72,7 @@ We measured the quality of the final 3D renders using **PSNR (Peak Signal-to-Noi
 | **SDx4 + 3DGS (Ours)** | **32.96** | **Generative Model** |
 | HRDS Baseline | 33.17 | "Perfect" Baseline |
 
-![Table 1 Visualization](path/to/table_image.png)
+![Table 1 Visualization](images/results_table.png)
 
 As the table shows:
 1.  **SDx4 + 3DGS** achieved a PSNR of **32.96**.
@@ -83,7 +83,7 @@ As the table shows:
 
 Numbers are great, but 3DGS is visual. Let's look at the renders.
 
-![Fern and Fortress Comparisons](path/to/slide33_image.png)
+![Fern and Fortress Comparisons](images/qualitative_comparison.png)
 *Figure 3: Visual comparison of reconstruction quality.*
 
 In the comparison above, you can see that the **SDx4 pipeline** (middle/bottom rows) produces sharp, coherent 3D geometry that closely mirrors the ground truth. Other methods tended to introduce artifacts or blurriness because their upscaled images didn't provide COLMAP with stable enough features.
