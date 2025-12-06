@@ -1,17 +1,25 @@
 <div align="center">
 
+<!-- ===================== LOGOS ===================== -->
+<p>
+  <img src="LOGO_CLEMSON" alt="Clemson Logo" height="90" style="margin-right: 40px;">
+</p>
+
+<br>
+
 # **Splatting the Unsplattable: Making 3D Gaussian Splatting Work with Low-Res Images**
 
 <br>
 
+<!-- ===================== AUTHORS ===================== -->
 <table>
   <tr>
-    <td align="center" width="280">
+    <td align="center" width="300">
       <strong>Omkar Mayekar</strong><br>
       Clemson University<br>
       <a href="mailto:omayeka@clemson.edu">omayeka@clemson.edu</a>
     </td>
-    <td align="center" width="280">
+    <td align="center" width="300">
       <strong>Vinay Rajolu</strong><br>
       Clemson University<br>
       <a href="mailto:vrajolu@clemson.edu">vrajolu@clemson.edu</a>
