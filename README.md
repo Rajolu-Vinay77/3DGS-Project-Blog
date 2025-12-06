@@ -1,30 +1,30 @@
 <div align="center">
+  <h1>Splatting the Unsplattable: Making 3D Gaussian Splatting Work with Low-Res Images</h1>
 
-# **Splatting the Unsplattable: Making 3D Gaussian Splatting Work with Low-Res Images**
+  <br>
 
-<br>
+  <table style="margin: 0 auto; border: none; background-color: transparent;">
+    <tr style="border: none; background-color: transparent;">
+      <td align="center" style="border: none; background-color: transparent; padding-right: 30px;">
+        <strong>Omkar Mayekar</strong><br>
+        Clemson University<br>
+        <a href="mailto:omayekar@clemson.edu">omayeka@clemson.edu</a>
+      </td>
+      <td align="center" style="border: none; background-color: transparent; padding-left: 30px;">
+        <strong>Vinay Rajolu</strong><br>
+        Clemson University<br>
+        <a href="mailto:vrajolu@clemson.edu">vrajolu@clemson.edu</a>
+      </td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <td align="center" width="300">
-      <strong>Omkar Mayekar</strong><br>
-      Clemson University<br>
-      <a href="mailto:omayeka@clemson.edu">omayeka@clemson.edu</a>
-    </td>
-    <td align="center" width="300">
-      <strong>Vinay Rajolu</strong><br>
-      Clemson University<br>
-      <a href="mailto:vrajolu@clemson.edu">vrajolu@clemson.edu</a>
-    </td>
-  </tr>
-</table>
+  <br>
 
-<br>
-
-**CPSC 8810 – Machine Learning-based Image Synthesis**  
-Final Project  
-Fall 2025
-
+  <p>
+    <strong>CPSC 8810 - Machine Learning-based Image Synthesis</strong><br>
+    Final Project<br>
+    Fall 2025
+  </p>
 </div>
 
 <hr>
