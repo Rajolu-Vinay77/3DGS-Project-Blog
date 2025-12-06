@@ -1,6 +1,31 @@
-# Splatting the Unsplattable: Making 3D Gaussian Splatting Work with Low-Res Images
+<div align="center">
+  <h1>Splatting the Unsplattable: Making 3D Gaussian Splatting Work with Low-Res Images</h1>
 
-**Authors:** Omkar Mayekar & Vinay Rajolu
+  <br>
+
+  <table style="border: none; background-color: transparent;">
+    <tr style="border: none; background-color: transparent;">
+      <td align="center" style="border: none; background-color: transparent; padding-right: 50px;">
+        <strong>Omkar Mayekar</strong><br>
+        Clemson University<br>
+        <a href="mailto:omayekar@clemson.edu">omayekar@clemson.edu</a> </td>
+      <td align="center" style="border: none; background-color: transparent; padding-left: 50px;">
+        <strong>Vinay Rajolu</strong><br>
+        Clemson University<br>
+        <a href="mailto:vrajolu@clemson.edu">vrajolu@clemson.edu</a> </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <p>
+    <strong>CPSC 8810 - Machine Learning-based Image Synthesis</strong><br>
+    Final Project<br>
+    Fall 2024
+  </p>
+</div>
+
+<hr>
 
 > **Abstract:** Imagine trying to reconstruct a detailed 3D model of a dinosaur skeleton, but you are only allowed to look at it through a pair of foggy, low-quality glasses. This is essentially the problem facing modern robotics and super-resolution tasks when using **3D Gaussian Splatting (3DGS)**.
 >
