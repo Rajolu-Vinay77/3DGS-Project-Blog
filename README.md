@@ -6,12 +6,12 @@
 
 <table>
   <tr>
-    <td align="center" width="300">
+    <td align="center" width="280">
       <strong>Omkar Mayekar</strong><br>
       Clemson University<br>
       <a href="mailto:omayeka@clemson.edu">omayeka@clemson.edu</a>
     </td>
-    <td align="center" width="300">
+    <td align="center" width="280">
       <strong>Vinay Rajolu</strong><br>
       Clemson University<br>
       <a href="mailto:vrajolu@clemson.edu">vrajolu@clemson.edu</a>
@@ -22,8 +22,7 @@
 <br>
 
 **CPSC 8810 – Machine Learning-based Image Synthesis**  
-Final Project  
-Fall 2025
+Final Project • Fall 2025
 
 </div>
 
