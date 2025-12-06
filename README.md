@@ -17,6 +17,7 @@ To figure out these camera positions (poses), 3DGS relies on a classic tool call
 **Here is the catch:** When you feed COLMAP low-resolution images (e.g., 100x100 pixels), it fails.
 
 ![Success vs Failure Flow Chart](images/colmap_failure.png)
+
 *Figure 1: The COLMAP failure case on low-resolution inputs.*
 
 As shown above, purely low-res images don't have enough distinct pixels for COLMAP to lock onto. It returns "No Poses," and the 3DGS training crashes before it even begins. This is a major blocker for robotics or drones that might stream low-bandwidth video but still need to build a 3D map.
@@ -65,13 +66,6 @@ We also established a **"Gold Standard" baseline called HRDS (High-Resolution Do
 
 We measured the quality of the final 3D renders using **PSNR (Peak Signal-to-Noise Ratio)**. Higher is better.
 
-| Method | PSNR Score | Notes |
-| :--- | :--- | :--- |
-| RealBasicVSR | 32.42 | Video Super-Res |
-| SwinIR | 32.62 | Image Restoration |
-| **SDx4 + 3DGS (Ours)** | **32.96** | **Generative Model** |
-| HRDS Baseline | 33.17 | "Perfect" Baseline |
-
 ![Table 1 Visualization](images/results_table.png)
 
 As the table shows:
@@ -101,4 +95,7 @@ We successfully demonstrated that you don't need native high-resolution images t
 ---
 
 ### References
-* Project Presentation: *Improving 3D Gaussian Splatting for Low-Resolution Image Inputs*, CPSC 8810.
+* [NeRF] NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis, Mildenhall et al, ECCV 2020
+* [InstantNGP] Instant Neural Graphics Primitives with a Multiresolution Hash Encoding. Müller et al., SIGGRAPH 2022
+* [3DGS] 3D Gaussian Splatting for Real-Time Radiance Field Rendering. Kerbl et al., SIGGRAPH 2023
+* [PointNet] PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation. Qi et al, CVPR 2017
