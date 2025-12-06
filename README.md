@@ -21,7 +21,7 @@
   <p>
     <strong>CPSC 8810 - Machine Learning-based Image Synthesis</strong><br>
     Final Project<br>
-    Fall 2024
+    Fall 2025
   </p>
 </div>
 
