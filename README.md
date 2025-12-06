@@ -8,7 +8,7 @@
       <td align="center" style="border: none; background-color: transparent; padding-right: 50px;">
         <strong>Omkar Mayekar</strong><br>
         Clemson University<br>
-        <a href="mailto:omayekar@clemson.edu">omayekar@clemson.edu</a> </td>
+        <a href="mailto:omayekar@clemson.edu">omayeka@clemson.edu</a> </td>
       <td align="center" style="border: none; background-color: transparent; padding-left: 50px;">
         <strong>Vinay Rajolu</strong><br>
         Clemson University<br>
