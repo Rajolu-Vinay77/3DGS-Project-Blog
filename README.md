@@ -3,16 +3,18 @@
 
   <br>
 
-  <table style="border: none; background-color: transparent;">
+  <table style="margin: 0 auto; border: none; background-color: transparent;">
     <tr style="border: none; background-color: transparent;">
-      <td align="center" style="border: none; background-color: transparent; padding-right: 50px;">
+      <td align="center" style="border: none; background-color: transparent; padding-right: 30px;">
         <strong>Omkar Mayekar</strong><br>
         Clemson University<br>
-        <a href="mailto:omayekar@clemson.edu">omayeka@clemson.edu</a> </td>
-      <td align="center" style="border: none; background-color: transparent; padding-left: 50px;">
+        <a href="mailto:omayekar@clemson.edu">omayeka@clemson.edu</a>
+      </td>
+      <td align="center" style="border: none; background-color: transparent; padding-left: 30px;">
         <strong>Vinay Rajolu</strong><br>
         Clemson University<br>
-        <a href="mailto:vrajolu@clemson.edu">vrajolu@clemson.edu</a> </td>
+        <a href="mailto:vrajolu@clemson.edu">vrajolu@clemson.edu</a>
+      </td>
     </tr>
   </table>
 
