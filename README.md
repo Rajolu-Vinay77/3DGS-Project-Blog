@@ -1,17 +1,9 @@
 <div align="center">
 
-<!-- ===================== LOGOS ===================== -->
-<p>
-  <img src="LOGO_CLEMSON" alt="Clemson Logo" height="90" style="margin-right: 40px;">
-</p>
-
-<br>
-
 # **Splatting the Unsplattable: Making 3D Gaussian Splatting Work with Low-Res Images**
 
 <br>
 
-<!-- ===================== AUTHORS ===================== -->
 <table>
   <tr>
     <td align="center" width="300">
@@ -30,7 +22,8 @@
 <br>
 
 **CPSC 8810 – Machine Learning-based Image Synthesis**  
-Final Project • Fall 2025
+Final Project  
+Fall 2025
 
 </div>
 
