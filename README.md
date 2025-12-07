@@ -1,14 +1,18 @@
 <div align="center">
   <h1>Splatting the Unsplattable: Making 3D Gaussian Splatting Work with Low-Res Images</h1>
 
-  <br>
+  <a href="https://github.com/omkar55-bot/Improving-3D-Gaussian-Splatting-for-Low-Resolution-Image-Inputs">
+    <img src="https://img.shields.io/badge/View%20Code-GitHub-black?style=for-the-badge&logo=github" alt="View Code on GitHub">
+  </a>
+
+  <br><br>
 
   <table style="margin: 0 auto; border: none; background-color: transparent;">
     <tr style="border: none; background-color: transparent;">
       <td align="center" style="border: none; background-color: transparent; padding-right: 30px;">
         <strong>Omkar Mayekar</strong><br>
         Clemson University<br>
-        <a href="mailto:omayekar@clemson.edu">omayeka@clemson.edu</a>
+        <a href="mailto:omayekar@clemson.edu">omayekar@clemson.edu</a>
       </td>
       <td align="center" style="border: none; background-color: transparent; padding-left: 30px;">
         <strong>Vinay Rajolu</strong><br>
@@ -127,7 +131,7 @@ Numbers are great, but 3DGS is visual. Let's look at the renders.
 *Figure 3: Visual comparison on LLFF dataset. SDx4 (middle/bottom rows) produces sharp, coherent 3D geometry.*
 
 #### **Visuals: Mip-NeRF 360 Dataset**
-![Mip-NeRF 360 Comparisons](images/qualitative_comparison_mipnerf.png)
+![Mip-NeRF 360 Comparisons](images/corrected_image.png)
 
 *Figure 4: Visual comparison on Mip-NeRF 360 dataset.*
 
