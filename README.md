@@ -77,7 +77,7 @@ We proposed a novel pipeline to bypass the resolution limit. The core idea is si
 1. **Input:** Low-Resolution Images (e.g., 100x100) which act as our ground truth.
 2. **Upscaling:** We use advanced Super-Resolution models (like **Stable Diffusion X4**) to upscale the images by 4x (to 400x400).
 3. **Pose Estimation:** We run colmap on these upscaled images. Because the images are now larger and sharper, COLMAP successfully finds features and generates camera poses.
-4. **Intrinsics Downscaling:** **(Crucial Step)** We cannot use the poses exactly as they are because they correspond to a 400x300 image. We mathematically scale down the camera intrinsics (focal length, center points) to match our original 100x75 resolution.
+4. **Intrinsics Downscaling:** **(Crucial Step)** We cannot use the poses exactly as they are because they correspond to a 400x400 image. We mathematically scale down the camera intrinsics (focal length, center points) to match our original 100x100 resolution.
 5. **3DGS Training:** We initialize the 3D Gaussian Splatting training using these downscaled poses and the *original* low-res images.
 
 This allows us to train a 3D scene that is faithful to the original data, even though we used "hallucinated" high-res data to find the camera positions.
