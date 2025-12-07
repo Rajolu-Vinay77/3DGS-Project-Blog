@@ -80,9 +80,10 @@ This allows us to train a 3D scene that is faithful to the original data, even t
 
 ## 4. Experiments: Battle of the Upscalers
 
-To test this, we used two datasets:
-1. **LLFF Dataset:** 6 scenes downscaled to a tiny **100x100 resolution**.
-2. **Mip-NeRF 360 Dataset:** 6 scenes downscaled to **150x100 resolution** (representing more complex scenes).
+To test this, we evaluated our pipeline on two distinct datasets with different characteristics:
+
+1.  **LLFF Dataset:** Standard forward-facing scenes downscaled to a tiny **100x100 resolution**.
+2.  **Mip-NeRF 360 Dataset:** Complex, unbounded 360-degree scenes downscaled to **150x100 resolution**.
 
 We compared three different upscaling technologies to see which one helped COLMAP the most:
 * **RealBasicVSR:** A video super-resolution model.
@@ -95,30 +96,41 @@ We also established a **"Gold Standard" baseline called HRDS (High-Resolution Do
 
 We measured the quality of the final 3D renders using **PSNR (Peak Signal-to-Noise Ratio)**. Higher is better.
 
-**1. LLFF Dataset Results (100x100):**
-As shown in our results, **SDx4 + 3DGS** achieved a PSNR of **32.96**, which was significantly better than RealBasicVSR (32.42) and SwinIR (32.62). It came incredibly close to the HRDS "Perfect" Baseline (33.17).
+#### **Dataset 1: LLFF Results (100x100)**
 
-![Table 1 Visualization](images/results_table.png)
+![Table 1: LLFF Results](images/results_table.png)
 
-**2. Mip-NeRF 360 Dataset Results (150x100):**
-For the more complex Mip-NeRF 360 scenes, we observed a shift in performance:
-* **RealBasicVSR + 3DGS:** 32.49 PSNR
-* **SDx4 + 3DGS:** 32.35 PSNR
-* **SwinIR + 3DGS:** 31.13 PSNR
+In the standard LLFF scenes, the generative approach won out:
+1.  **SDx4 + 3DGS** achieved a PSNR of **32.96**.
+2.  This was significantly better than RealBasicVSR (32.42) and SwinIR (32.62).
+3.  Most importantly, SDx4 came incredibly close to the HRDS "Perfect" Baseline (33.17).
 
-Here, RealBasicVSR performed slightly better than SDx4 and was closest to the HRDS baseline (32.94).
+#### **Dataset 2: Mip-NeRF 360 Results (150x100)**
+
+We observed a different trend when moving to the more complex, unbounded scenes in the Mip-NeRF 360 dataset.
+
+![Table 2: Mip-NeRF 360 Results](images/results_table_mipnerf.jpg)
+
+As shown in the table above:
+1.  **RealBasicVSR + 3DGS** achieved the highest accuracy with a PSNR of **32.49**, beating SDx4 (32.35).
+2.  **SwinIR** lagged behind significantly at 31.13 PSNR.
+3.  RealBasicVSR was the closest to the HRDS baseline (32.94).
+
+**Analysis:** We believe RealBasicVSR performs better here because Mip-NeRF 360 scenes require high temporal/spatial consistency across many views, which video upscalers (like RealBasicVSR) are specifically designed to handle better than single-image generators like SDx4.
 
 ### Qualitative Results
 
 Numbers are great, but 3DGS is visual. Let's look at the renders.
 
-![Qualitative Comparisons](images/qualitative_comparison.png)
-*Figure 3: Visual comparison of reconstruction quality.*
+#### **Visuals: LLFF Dataset**
+![Fern and Fortress Comparisons](images/qualitative_comparison.png)
+*Figure 3: Visual comparison on LLFF dataset. SDx4 (middle/bottom rows) produces sharp, coherent 3D geometry.*
 
-In the comparisons, you can see that the **SDx4 pipeline** produces sharp, coherent 3D geometry for standard scenes. However, for the Mip-NeRF 360 dataset, RealBasicVSR provided reconstruction results that were perceptually closer to the ground truth.
+#### **Visuals: Mip-NeRF 360 Dataset**
+![Mip-NeRF 360 Comparisons](images/qualitative_comparison_mipnerf.png)
+*Figure 4: Visual comparison on Mip-NeRF 360 dataset.*
 
-**Experiment Conclusion:**
-We can tell from the results that for complicated scenes, **RealBasicVSR is performing slightly better than SDX4**, whereas SDx4 excels in standard object-centric scenes.
+For complicated scenes (like the tractor and garden shown above), **RealBasicVSR** produced results that were perceptually sharper and closer to the ground truth compared to SDx4 and SwinIR.
 
 ## 5. Conclusion & Future Work
 
