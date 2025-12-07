@@ -129,7 +129,7 @@ Numbers are great, but 3DGS is visual. Let's look at the renders.
 #### **Visuals: LLFF Dataset**
 ![Fern and Fortress Comparisons](images/correct_first.png)
 
-*Figure 3: Visual comparison on LLFF dataset. SDx4 (middle/bottom rows) produces sharp, coherent 3D geometry.*
+*Figure 3: Visual comparison on LLFF dataset. SDx4 (3rd column) produces sharp, coherent 3D geometry.*
 
 #### **Visuals: Mip-NeRF 360 Dataset**
 ![Mip-NeRF 360 Comparisons](images/corrected_image.png)
