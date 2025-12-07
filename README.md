@@ -70,17 +70,19 @@ We proposed a novel pipeline to bypass the resolution limit. The core idea is si
 
 ### Step-by-Step Algorithm
 
-1.  **Input:** Low-Resolution Images (e.g., 100x75) which act as our ground truth.
-2.  **Upscaling:** We use advanced Super-Resolution models (like **Stable Diffusion X4**) to upscale the images by 4x (to 400x300).
-3.  **Pose Estimation:** We run `colmap2nerf.py` on these upscaled images. Because the images are now larger and sharper, COLMAP successfully finds features and generates camera poses.
-4.  **Intrinsics Downscaling:** **(Crucial Step)** We cannot use the poses exactly as they are because they correspond to a 400x300 image. We mathematically scale down the camera intrinsics (focal length, center points) to match our original 100x75 resolution.
-5.  **3DGS Training:** We initialize the 3D Gaussian Splatting training using these downscaled poses and the *original* low-res images.
+1. **Input:** Low-Resolution Images (e.g., 100x75) which act as our ground truth.
+2. **Upscaling:** We use advanced Super-Resolution models (like **Stable Diffusion X4**) to upscale the images by 4x (to 400x300).
+3. **Pose Estimation:** We run `colmap2nerf.py` on these upscaled images. Because the images are now larger and sharper, COLMAP successfully finds features and generates camera poses.
+4. **Intrinsics Downscaling:** **(Crucial Step)** We cannot use the poses exactly as they are because they correspond to a 400x300 image. We mathematically scale down the camera intrinsics (focal length, center points) to match our original 100x75 resolution.
+5. **3DGS Training:** We initialize the 3D Gaussian Splatting training using these downscaled poses and the *original* low-res images.
 
 This allows us to train a 3D scene that is faithful to the original data, even though we used "hallucinated" high-res data to find the camera positions.
 
 ## 4. Experiments: Battle of the Upscalers
 
-To test this, we used the **LLFF dataset** (famous in the NeRF world), specifically focusing on 6 scenes downscaled to a tiny **100x100 resolution**.
+To test this, we used two datasets:
+1. **LLFF Dataset:** 6 scenes downscaled to a tiny **100x100 resolution**.
+2. **Mip-NeRF 360 Dataset:** 6 scenes downscaled to **150x100 resolution** (representing more complex scenes).
 
 We compared three different upscaling technologies to see which one helped COLMAP the most:
 * **RealBasicVSR:** A video super-resolution model.
@@ -93,21 +95,30 @@ We also established a **"Gold Standard" baseline called HRDS (High-Resolution Do
 
 We measured the quality of the final 3D renders using **PSNR (Peak Signal-to-Noise Ratio)**. Higher is better.
 
+**1. LLFF Dataset Results (100x100):**
+As shown in our results, **SDx4 + 3DGS** achieved a PSNR of **32.96**, which was significantly better than RealBasicVSR (32.42) and SwinIR (32.62). It came incredibly close to the HRDS "Perfect" Baseline (33.17).
+
 ![Table 1 Visualization](images/results_table.png)
 
-As the table shows:
-1.  **SDx4 + 3DGS** achieved a PSNR of **32.96**.
-2.  This was significantly better than RealBasicVSR (32.42) and SwinIR (32.62).
-3.  Most importantly, SDx4 came incredibly close to the HRDS "Perfect" Baseline (33.17).
+**2. Mip-NeRF 360 Dataset Results (150x100):**
+For the more complex Mip-NeRF 360 scenes, we observed a shift in performance:
+* **RealBasicVSR + 3DGS:** 32.49 PSNR
+* **SDx4 + 3DGS:** 32.35 PSNR
+* **SwinIR + 3DGS:** 31.13 PSNR
+
+Here, RealBasicVSR performed slightly better than SDx4 and was closest to the HRDS baseline (32.94).
 
 ### Qualitative Results
 
 Numbers are great, but 3DGS is visual. Let's look at the renders.
 
-![Fern and Fortress Comparisons](images/qualitative_comparison.png)
+![Qualitative Comparisons](images/qualitative_comparison.png)
 *Figure 3: Visual comparison of reconstruction quality.*
 
-In the comparison above, you can see that the **SDx4 pipeline** (middle/bottom rows) produces sharp, coherent 3D geometry that closely mirrors the ground truth. Other methods tended to introduce artifacts or blurriness because their upscaled images didn't provide COLMAP with stable enough features.
+In the comparisons, you can see that the **SDx4 pipeline** produces sharp, coherent 3D geometry for standard scenes. However, for the Mip-NeRF 360 dataset, RealBasicVSR provided reconstruction results that were perceptually closer to the ground truth.
+
+**Experiment Conclusion:**
+We can tell from the results that for complicated scenes, **RealBasicVSR is performing slightly better than SDX4**, whereas SDx4 excels in standard object-centric scenes.
 
 ## 5. Conclusion & Future Work
 
@@ -117,12 +128,13 @@ We successfully demonstrated that you don't need native high-resolution images t
 
 ### Future Directions
 * **Robotics:** We plan to test this on noisy, real-world drone footage where bandwidth is limited.
-* **End-to-End Training:** Currently, the upscaling and 3D training are separate. A future project could optimize the upscaler specifically to maximize 3DGS quality in a single loop.
+* **Denoising:** We will use image denoisers for noisy input images before giving them to COLMAP for pose estimation. COLMAP often fails on noisy images even if the resolution is good, so this is a critical next step.
 
 ---
 
 ### References
-* [NeRF] NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis, Mildenhall et al, ECCV 2020
-* [InstantNGP] Instant Neural Graphics Primitives with a Multiresolution Hash Encoding. Müller et al., SIGGRAPH 2022
-* [3DGS] 3D Gaussian Splatting for Real-Time Radiance Field Rendering. Kerbl et al., SIGGRAPH 2023
-* [PointNet] PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation. Qi et al, CVPR 2017
+* **RealBasicVSR:** [Chan et al., 2021](https://arxiv.org/pdf/2111.12704)
+* **SwinIR:** [Liang et al., 2021](https://arxiv.org/pdf/2108.10257)
+* **Stable Diffusion X4:** [Hugging Face](https://huggingface.co/asoderznik/sdx4-upscaler)
+* **3D Gaussian Splatting:** [Kerbl et al., SIGGRAPH 2023](https://arxiv.org/pdf/2308.04079)
+* **COLMAP:** [Schonberger et al.](https://colmap.github.io/)
