@@ -109,7 +109,7 @@ In the standard LLFF scenes, the generative approach won out:
 
 We observed a different trend when moving to the more complex, unbounded scenes in the Mip-NeRF 360 dataset.
 
-![Table 2: Mip-NeRF 360 Results](images/results_table_mipnerf.jpg)
+![Table 2: Mip-NeRF 360 Results](images/results_table_mipnerf.png)
 
 As shown in the table above:
 1.  **RealBasicVSR + 3DGS** achieved the highest accuracy with a PSNR of **32.49**, beating SDx4 (32.35).
@@ -128,6 +128,7 @@ Numbers are great, but 3DGS is visual. Let's look at the renders.
 
 #### **Visuals: Mip-NeRF 360 Dataset**
 ![Mip-NeRF 360 Comparisons](images/qualitative_comparison_mipnerf.png)
+
 *Figure 4: Visual comparison on Mip-NeRF 360 dataset.*
 
 For complicated scenes (like the tractor and garden shown above), **RealBasicVSR** produced results that were perceptually sharper and closer to the ground truth compared to SDx4 and SwinIR.
